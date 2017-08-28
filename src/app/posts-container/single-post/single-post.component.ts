@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Post } from '../../shared/model/post';
 
 @Component({
   selector: 'app-single-post',
@@ -8,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SinglePostComponent implements OnInit {
 
   constructor() { }
-  @Input() postList;
+  @Input() postList: Post[];
   ngOnInit() {
   }
 
