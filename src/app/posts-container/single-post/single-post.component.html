@@ -1,14 +1,14 @@
 <h3> Blog posts</h3>
-<section class="wrapper jumbotrom" *ngIf="postList | async as posts else postLoading">
+<section class="wrapper jumbotron" *ngIf="postList | async as posts else postLoading">
   <div *ngFor="let post of posts" class="bs-callout bs-callout-info">
     <h4>
       <a href="/posts/{{post.$key}}">
       {{post.post_title}}
     </a>
     </h4>
-    <p>{{post.body}}</p>
+    <p>{{post.post_body}}</p>
     <p>
-      <a href=""> {{post.user}}</a>
+      <a [href]="'/users/'+ post.user"> {{post.user}}</a>
     </p>
     <small>{{post.date | date}}</small>
   </div>
