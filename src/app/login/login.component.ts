@@ -34,5 +34,6 @@ export class LoginComponent implements OnInit {
   }
   loginWithGoogle() {
     this.authService.loginWithGoggle();
+    this.router.navigate(['/posts']);
   }
 }
