@@ -5,46 +5,37 @@ import { Observable } from 'rxjs/Rx';
 import { Post } from '../shared/model/post';
 import { PostsService } from '../shared/posts.service';
 import { User } from '../shared/model/User';
+import { PostsPaginationService } from '../shared/posts/posts-pagination.service';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  styleUrls: ['./user-profile.component.css'],
+  providers: [PostsPaginationService]
 })
 export class UserProfileComponent implements OnInit {
 
   public user$: Observable<User>;
-  public posts$: Observable<Post[]>;
+  public posts$: Observable<Post[]> = this.postPaginationService.post$;
   private username;
-  constructor(private postService: PostsService, private route: ActivatedRoute) { }
+  constructor(private postService: PostsService, private route: ActivatedRoute,
+  private postPaginationService: PostsPaginationService) { }
 
   ngOnInit() {
-    this.user$ = this.route.params.switchMap(param => {
-      this.username = param['username'];
-      this.getPosts(this.username, {
-        query: {
-          limitToFirst: 3
-        }
-      });
-      return this.postService.findUserByUsername(this.username);
-    });
+    this.user$ = this.route.params.switchMap(
+      param => this.postService.findUserByUsername(param['username']))
+      .publishReplay().refCount();
+      this.user$.subscribe(user => this.getPosts(user.$key));
   }
 
-  getPosts(username, query) {
-    this.posts$ = this.postService.getPostByUsername(username, query);
+  getPosts(userKey) {
+    this.postPaginationService.loadFirstPage(userKey);
   }
 
    nextPosts() {
-    this.posts$.subscribe(posts => {
-      const startAt = posts[posts.length - 1].$key;
-      this.getPosts(this.username, {
-        query: {
-          orderByKey: true,
-          limitToFirst: 3,
-          startAt
-        }
-      });
-    });
+    this.postPaginationService.loadNextPage();
    }
-
+   prevPosts() {
+    this.postPaginationService.loadPrevPage();
+   }
 }

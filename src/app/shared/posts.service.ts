@@ -48,10 +48,9 @@ export class PostsService {
      }).map(res =>  User.fromArray(res[0]));
   }
 
-  findPostKeysPerUser(username: string,
+  findPostKeysPerUser(userkey: string,
     query: FirebaseListFactoryOpts= {}): Observable<string[]> {
-      return this.findUserByUsername(username)
-      .switchMap(user => this.af.list(`/postsPerUser/${user.$key}`, query))
+      return  this.af.list(`/postsPerUser/${userkey}`, query)
       .map(postsKeysPerUser => postsKeysPerUser.map(post => post.$key));
   }
 
@@ -60,8 +59,9 @@ export class PostsService {
     .map(postKeys => postKeys.map(key => this.findPostById(key)))
     .flatMap(fbObj => Observable.combineLatest(fbObj));
   }
-  getPostByUsername(username: string, query: FirebaseListFactoryOpts) {
-    const firstPagePostKeys$ = this.findPostKeysPerUser(username, query);
+  getPostByUserKey(userkey: string, query: FirebaseListFactoryOpts) {
+    const firstPagePostKeys$ = this.findPostKeysPerUser(userkey, query);
     return this.findPostsForPostKeys(firstPagePostKeys$);
   }
+
 }
