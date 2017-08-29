@@ -5,6 +5,7 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/publishReplay';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/Observable/combineLatest';
+import 'rxjs/add/Observable/fromPromise';
 
 import { AppModule } from './app/app.module';
 import { enableProdMode } from '@angular/core';

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../shared/auth/auth.service';
+import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  public isLoggedIn;
+  constructor(private auth: AuthService, private router: Router) {
+    auth.isAuthenticate().subscribe(
+      success => this.isLoggedIn = success);
+   }
 
   ngOnInit() {
   }
-
+  logOut() {
+    this.auth.logOut();
+    this.router.navigate(['/login']);
+  }
 }
