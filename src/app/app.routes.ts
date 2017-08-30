@@ -1,3 +1,4 @@
+import { AuthGuardService } from './shared/auth/auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PostPageComponent } from './post-page/post-page.component';
@@ -10,7 +11,8 @@ export const ROUTES: Route[] = [
         {path: '', component: PostsContainerComponent},
         {path: ':id', component: PostPageComponent}
 
-    ]
+    ],
+    canActivate: [AuthGuardService]
     },
     {path: 'users',
     children: [

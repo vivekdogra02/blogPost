@@ -15,6 +15,19 @@ body {
   font-size: 14px;
   color: #fff;
 }
+.form-container {
+  background:white;
+  padding:3.5em;
+  width:500px;
+  position:fixed;
+  left:50%;
+  margin-left:-250px;
+}
+.alc {
+  text-align:center;
+  display:block;
+  margin: 15px 0;
+}
 
 .button:hover {
   background: #049525;
@@ -74,4 +87,60 @@ h2 {
 .bs-callout p:last-child {
   margin-bottom: 0;
   font-size: 14px;
+}
+.loading {
+  width: 30px;
+  height: 30px;
+  border: 5px solid #ccc;
+  position: fixed;
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+  border-radius: 50%;
+}
+#fb, #google, #email {
+  padding:1.2em;
+  width:100%;
+  cursor:pointer;
+  margin-bottom:15px;
+  font-size:1.3em;
+}
+
+.basic-btn {
+  background: #3B8598;
+  color:white;
+}
+
+input.txt {
+  background:#fff !important;
+  padding:1.3em 1em;
+  font-size:1.3em;
+  border: 1px solid #BBBBBB;
+}
+
+.loading:after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 10px;
+  background: #E2E4E6;
+  top: 10px;
+  left: -5px;
+  animation: spin 1.2s infinite;
+}
+
+@media (max-width: 600px) {
+  body {
+      padding-top:1.2em;
+  }
+
+  .form-container {
+      padding:1.2em;
+      width:90%;
+      margin-left:-45%;
+  }
+  button {
+      font-size:1em;
+  }
 }
