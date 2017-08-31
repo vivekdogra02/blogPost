@@ -8,20 +8,21 @@ import { Observable } from 'rxjs/Rx';
 export class AuthService {
 
   public user: Observable<firebase.User>;
-  constructor(private afAuth: AngularFireAuth) { 
+  constructor(private afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
   }
-  loginWithGoggle() {
-      this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .catch( error => error);
+  loginWithGoggle(): Observable<any> {
+      return Observable.fromPromise(this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()));
   }
-  loginWithFb() {
-    this.afAuth.auth
-    .signInWithPopup(new firebase.auth.FacebookAuthProvider())
-    .catch( error => error);
+  loginWithFb(): Observable<any> {
+    return Observable.fromPromise(this.afAuth.auth
+    .signInWithPopup(new firebase.auth.FacebookAuthProvider()));
   }
   login(email, password): Observable<any> {
     return Observable.fromPromise(this.afAuth.auth.signInWithEmailAndPassword(email, password));
+  }
+  signUpUser(username, password): Observable<any> {
+    return Observable.fromPromise(this.afAuth.auth.createUserWithEmailAndPassword(username, password));
   }
   isAuthenticate(): Observable<boolean> {
     return this.user.map(user => user && user.uid !== undefined);

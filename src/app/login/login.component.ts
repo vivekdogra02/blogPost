@@ -25,31 +25,31 @@ export class LoginComponent implements OnInit {
              this.router.navigate(['/posts']);
           }
         });
-      // this.form = this.formBuilder.group({
-      //   email: ['', Validators.required],
-      //   password: ['', Validators.required]
-      // });
      }
 
   ngOnInit() {
   }
 
-  login(){
-    const inputValue = this.form.value;
-  console.log(inputValue);
-  this.authService.login(inputValue.email, inputValue.password)
-    .subscribe(
+  // login() {
+  //   const inputValue = this.form.value;
+  //   console.log(inputValue);
+  // this.authService.login(inputValue.email, inputValue.password)
+  //   .subscribe(
+  //     success => this.router.navigate(['/posts']),
+  //     error => alert(error)
+  //   );
+  // }
+  loginWithGoogle() {
+    this.authService.loginWithGoggle().subscribe(
       success => this.router.navigate(['/posts']),
       error => alert(error)
     );
   }
-  loginWithGoogle() {
-    this.authService.loginWithGoggle();
-    this.router.navigate(['/posts']);
-  }
 
 loginWithFb() {
-  this.authService.loginWithFb();
-  this.router.navigate(['/posts']);
+  this.authService.loginWithFb().subscribe(
+    success => this.router.navigate(['/posts']),
+    error => alert(error)
+  );
 }
 }

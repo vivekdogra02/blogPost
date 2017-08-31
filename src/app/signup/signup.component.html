@@ -1,10 +1,7 @@
 <div class="form-container">
   <a routerLink="/login" id="goback">Go back</a>
 
-  <h2>Join now</h2>
-
-  <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
-    
+  <h2>Join now</h2>    
   <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
 
     <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>

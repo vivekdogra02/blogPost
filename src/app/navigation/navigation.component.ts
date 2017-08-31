@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../shared/auth/auth.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
@@ -12,9 +13,16 @@ import { Router } from '@angular/router';
 export class NavigationComponent implements OnInit {
 
   public isLoggedIn;
-  constructor(private auth: AuthService, private router: Router) {
-    auth.isAuthenticate().subscribe(
-      success => this.isLoggedIn = success);
+  public name;
+  constructor(private auth: AuthService, private af: AngularFireAuth, private router: Router) {
+    this.af.authState.subscribe((result) => {
+      if (result) {
+        this.name  = result.displayName || result.email;
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+      }
+     });
    }
 
   ngOnInit() {
