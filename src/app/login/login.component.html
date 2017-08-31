@@ -1,11 +1,48 @@
-<div class="form-container">
+<!-- <div class="form-container">
   <img src="../../assets/images/lock.svg" id="lock">
 
-    <!-- <span class="error" *ngIf="error">{{ error }}</span> -->
+    <span class="error" *ngIf="error">{{ error }}</span>
 
   <button (click)="loginWithFb()" id="fb">Login With Facebook</button><br>
   <button (click)="loginWithGoogle()" id="google">Login With Google</button>
   <button routerLink="/login-email" id="email">Email</button>
 
   <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
-</div>
+</div> -->
+<!-- <div flex="50" layout="row" layout-align="center center">
+    <md-card flex="50">
+        <img src="../../assets/images/lock.svg" id="lock">
+        
+        
+          <button (click)="loginWithFb()" md-raised-button color="primary" id="fb">Login With Facebook</button><br>
+          <button (click)="loginWithGoogle()" id="google">Login With Google</button>
+          <button routerLink="/login-email" id="email">Email</button>
+        
+          <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
+   
+    </md-card>
+  </div> -->
+  <div layout="row" layout-align="center center">
+        <div class="login">
+          <h1>Blogger login</h1>
+            <form>
+              <img src="../../assets/images/lock.svg" id="lock">
+              <button class="btn" (click)="loginWithFb()" md-raised-button color="primary">
+                  <i class="fa fa-2x fa-facebook icon-left"></i>
+               <span>Login With Facebook</span> 
+              </button>
+               <button class="btn" md-raised-button color="default" (click)="loginWithGoogle()">
+                  <i class="fa fa-2x fa-google icon-left"></i> 
+                <span>Login With Google</span> 
+              </button>
+               <button class="btn" md-raised-button color="default" [routerLink]="['/login-email']">
+                  <md-icon class="icon-left">fingerprint</md-icon>
+               <span>Email</span> 
+              </button>
+               <br>
+               <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>               
+            </form>
+        </div>
+      
+      
+      </div>

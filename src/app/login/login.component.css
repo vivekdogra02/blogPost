@@ -5,7 +5,7 @@
 }
 
 #fb {
-    background:#3B5998 url('../../assets/images/facebook.svg') no-repeat 14px 6px;
+    background:#3B5898 url('../../assets/images/facebook.svg') no-repeat 14px 6px;
     background-size: 47px;
     color:#fff;
 }
@@ -20,8 +20,12 @@
     background: #ECECEC  url('../../assets/images/email.svg') no-repeat 25px;
     background-size: 25px;
 }
-
-@media (max-width: 600px) {
+.btn {
+    width: 100%;
+    margin-bottom: 15px;    
+    height: 48px;
+  }
+/* @media (max-width: 600px) {
     #page {
         padding:1em;
     }
@@ -40,4 +44,4 @@
     #email {
         background: #ECECEC;
     }
-}
+} */

@@ -1,14 +1,30 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-            <h3 class="pull-right" *ngIf="isLoggedIn">{{name}}</h3>
-          <ul class="nav navbar-nav">
-              <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-              <li><a routerLink="/posts" routerLinkActive="active" *ngIf="isLoggedIn">Posts</a></li>
-              <li><a routerLink="/login" routerLinkActive="active" *ngIf="!isLoggedIn">Login</a></li>
-              <li><a (click)="logOut()" routerLinkActive="active" *ngIf="isLoggedIn">Logout</a></li>
-              <li><a routerLink="/signup" routerLinkActive="active" *ngIf="!isLoggedIn">Register</a></li>
-          </ul>
-      </div>
-  </div>
-</nav>
+<md-toolbar color="primary">
+    <span [routerLink]="['/home']">Blogger</span>
+    <span class="spacer"></span>
+    <h3  *ngIf="isLoggedIn">{{name}}</h3>
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+        <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu #menu="mdMenu">
+        <button md-menu-item [routerLink]="['/home']">
+            <md-icon>home</md-icon>
+            <span>Home</span>
+        </button>
+        <button md-menu-item *ngIf="!isLoggedIn" [routerLink]="['/login']">
+            <md-icon>fingerprint</md-icon>
+            <span>Login</span>
+        </button>
+        <button md-menu-item *ngIf="isLoggedIn" [routerLink]="['/posts']">
+            <md-icon>announcement</md-icon>
+            <span>Posts</span>
+        </button>
+        <button md-menu-item *ngIf="!isLoggedIn" [routerLink]="['/signup']">
+            <md-icon>face</md-icon>
+            <span>Register</span>
+        </button>
+        <button md-menu-item *ngIf="isLoggedIn" (click)="logOut()">
+            <md-icon>settings</md-icon>
+            <span>Logout</span>
+        </button>
+    </md-menu>
+</md-toolbar>

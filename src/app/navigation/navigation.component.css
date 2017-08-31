@@ -1,29 +1,5 @@
-header {
-    background: #0abe51;
-    border-radius: 0;
-    border: 0;
-}
-.navbar-nav li a {
-    color: #fff;
-    font-size: 14px;
-    text-decoration: none;
-    text-align: center;
-}
-
-.navbar-nav li a:hover:after,.navbar-nav li a.active:after {
-    content: '';
-    display: block;
-    width: 78%;
-    height: 3px;
-    background: #fff;
-    position: absolute;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    bottom: 14px;
-}
-
-.navbar-brand img {
-    max-width: 220px;
-    width: 100%;
+.spacer {
+    flex: 1 1 auto;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
 }

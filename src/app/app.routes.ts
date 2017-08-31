@@ -19,6 +19,7 @@ export const ROUTES: Route[] = [
     {
         path: 'users',
         children: [
+            {path: '' , redirectTo: '/home', pathMatch: 'full'},
             {path: ':username', component: UserProfileComponent}
         ]
     },
@@ -27,5 +28,5 @@ export const ROUTES: Route[] = [
     { path: 'signup', component: SignupComponent },
     { path: 'login-email', component: EmailComponent },
     {path: '', redirectTo: '/home', pathMatch: 'full'},
-    {path: '**', redirectTo: '/home', pathMatch: 'full'}
+    {path: '**', redirectTo: '/home'}
 ];

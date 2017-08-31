@@ -1,3 +1,5 @@
+import 'hammerjs';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -6,11 +8,13 @@ import {AngularFireModule} from 'angularfire2';
 import { AppComponent } from './app.component';
 import { AuthGuardService } from './shared/auth/auth-guard.service';
 import { AuthService } from './shared/auth/auth.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { EmailComponent } from './email/email.component';
 import { HomeComponent } from './home/home.component';
 import { HttpModule } from '@angular/http';
 import { LoginComponent } from './login/login.component';
+import {MaterialModule} from '@angular/material';
 import { MembersComponent } from './members/members.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NgModule } from '@angular/core';
@@ -44,8 +48,10 @@ import { environment } from './../environments/environment';
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpModule,
+    MaterialModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot(ROUTES),
